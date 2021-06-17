@@ -28,7 +28,7 @@ public class YandexApiTranslator {
     public String translate(String text, String lang) {
         byte out[] = ("text=" + text).getBytes();
         if (out.length>10000) {
-            return "Error. Text too long";
+            System.out.println("Error");
         }
         String key = "trnsl.1.1.20190115T093726Z.65e1460d8d95bd06.р45ор345о3р4о53р45о345р3о";
         String baseUrl = "https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -48,7 +48,7 @@ public class YandexApiTranslator {
                 JsonArray jarr = jobj.get("text").getAsJsonArray();
                 return jarr.get(0).getAsString();
             } else {
-                return "Error. Site response non 200";
+                return "Error";
             }
 
         } catch (IOException e) {
